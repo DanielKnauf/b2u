@@ -1,12 +1,12 @@
 package knaufdan.android.b2u
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import knaufdan.android.arch.base.component.BindingKey
+import knaufdan.android.arch.base.component.LayoutRes
+import knaufdan.android.arch.mvvm.implementation.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity:BaseActivity<MainActivityViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+    override fun getBindingKey(): BindingKey = BR.viewModel
+
+    override fun getLayoutRes(): LayoutRes = R.layout.activity_main
 }

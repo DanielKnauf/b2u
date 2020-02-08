@@ -1,5 +1,6 @@
 import Versions.androidx_core_version
 import Versions.appcompat_version
+import Versions.archServices_version
 import Versions.broadcast_manager_version
 import Versions.constraint_layout_version
 import Versions.dagger_version
@@ -54,4 +55,7 @@ object Dependencies {
     val ktLint = "com.pinterest:ktlint:$ktLint_version"
 
     val picasso = "com.squareup.picasso:picasso:$picasso_version"
+
+    val archServices = "com.github.DanielKnauf:archservices:$archServices_version"
+    val jitPackUrl = "https://jitpack.io"
 }

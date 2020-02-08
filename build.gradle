@@ -25,3 +25,16 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+def isNonStable = { String version ->
+    return listOf("alpha", "beta", "rc", "cr", "m", "preview")
+            .map { qualifier -> Regex("(?i).*[.-]$qualifier[.\\d-]*") }
+            .any { nonStableIdentifier -> nonStableIdentifier.matches(candidate.version) }
+}
+
+dependencyUpdates {
+    // disallow release candidates as upgradable versions from stable versions
+    rejectVersionIf { dependency ->
+        isNonStable(dependency.candidate.version) && !isNonStable(dependency.currentVersion)
+    }
+}

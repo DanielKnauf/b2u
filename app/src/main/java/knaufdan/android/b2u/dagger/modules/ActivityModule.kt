@@ -6,6 +6,7 @@ import knaufdan.android.b2u.MainActivity
 
 @Module
 abstract class ActivityModule {
+    
     @ContributesAndroidInjector
     internal abstract fun contributesMainActivityInjector(): MainActivity
 }

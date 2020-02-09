@@ -1,8 +1,6 @@
 package knaufdan.android.b2u
 
-import knaufdan.android.arch.mvvm.implementation.ActivityViewModel
 import javax.inject.Inject
+import knaufdan.android.arch.mvvm.implementation.ActivityViewModel
 
-class MainActivityViewModel @Inject constructor() : ActivityViewModel() {
-
-}
+class MainActivityViewModel @Inject constructor() : ActivityViewModel()

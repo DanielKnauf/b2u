@@ -21,4 +21,6 @@ object Versions {
     const val picasso_version = "2.71828"
 
     const val retrofit_version = "2.6.2"
+
+    const val archServices_version = "master-SNAPSHOT"
 }

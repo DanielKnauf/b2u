@@ -29,6 +29,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //archServices
+    implementation Dependencies.archServices
+
     //kotlin
     implementation Dependencies.kotlin_stdlib
 
@@ -36,6 +39,13 @@ dependencies {
     implementation Dependencies.androidX_app_compat
     implementation Dependencies.androidX_core_ktx
     implementation Dependencies.androidX_constraint_layout
+
+    //dagger2
+    implementation Dependencies.dagger_core
+    implementation Dependencies.dagger_android
+    implementation Dependencies.dagger_android_support
+    kapt Dependencies.dagger_compiler
+    kapt Dependencies.dagger_android_processor
 
     //testing
     testImplementation Dependencies.jUnit

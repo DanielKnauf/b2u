@@ -6,6 +6,7 @@ import dagger.android.AndroidInjector
 import javax.inject.Singleton
 import knaufdan.android.arch.dagger.ArchModule
 import knaufdan.android.b2u.dagger.modules.ActivityModule
+import knaufdan.android.b2u.dagger.modules.FragmentModule
 import knaufdan.android.b2u.dagger.modules.ViewModelModule
 
 @Singleton
@@ -13,6 +14,7 @@ import knaufdan.android.b2u.dagger.modules.ViewModelModule
     modules = [
         AndroidInjectionModule::class,
         ActivityModule::class,
+        FragmentModule::class,
         ViewModelModule::class,
         ArchModule::class
     ]

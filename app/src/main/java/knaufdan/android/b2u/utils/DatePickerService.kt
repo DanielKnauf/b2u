@@ -11,6 +11,7 @@ class DatePickerService @Inject constructor(
     override fun showDatePicker(
         date: Triple<DayOfMonth, Month, Year>,
         minDate: Number?,
+        onCancelClicked: () -> Unit,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     ) {
         showDatePicker(
@@ -18,6 +19,7 @@ class DatePickerService @Inject constructor(
             month = date.second,
             year = date.third,
             minDate = minDate,
+            onCancelClicked = onCancelClicked,
             onDatePicked = onDatePicked
         )
     }
@@ -27,6 +29,7 @@ class DatePickerService @Inject constructor(
         month: Month,
         year: Year,
         minDate: Number?,
+        onCancelClicked: () -> Unit,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     ) {
         check(dayOfMonth in 1..31) { "DayOfMonth must be between 1 and 31, currently dayOfMonth == $dayOfMonth" }
@@ -46,6 +49,10 @@ class DatePickerService @Inject constructor(
         ).apply {
             if (minDate != null) {
                 datePicker.minDate = minDate.toLong()
+            }
+
+            setOnCancelListener {
+                onCancelClicked()
             }
         }.show()
     }

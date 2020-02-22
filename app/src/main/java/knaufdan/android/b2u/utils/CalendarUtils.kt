@@ -2,10 +2,6 @@ package knaufdan.android.b2u.utils
 
 import java.util.Calendar
 
-typealias DayOfMonth = Int
-typealias Month = Int
-typealias Year = Int
-
 object CalendarUtils {
     private val rightNow: Calendar
         get() = Calendar.getInstance()

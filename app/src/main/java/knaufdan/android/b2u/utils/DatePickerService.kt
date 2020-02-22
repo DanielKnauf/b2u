@@ -1,8 +1,8 @@
 package knaufdan.android.b2u.utils
 
 import android.app.DatePickerDialog
-import javax.inject.Inject
 import knaufdan.android.core.IContextProvider
+import javax.inject.Inject
 
 class DatePickerService @Inject constructor(
     private val contextProvider: IContextProvider
@@ -10,7 +10,7 @@ class DatePickerService @Inject constructor(
 
     override fun showDatePicker(
         date: Triple<DayOfMonth, Month, Year>,
-        minDate: Long,
+        minDate: Number?,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     ) {
         showDatePicker(
@@ -26,9 +26,13 @@ class DatePickerService @Inject constructor(
         dayOfMonth: DayOfMonth,
         month: Month,
         year: Year,
-        minDate: Long,
+        minDate: Number?,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     ) {
+        check(dayOfMonth in 1..31) { "DayOfMonth must be between 1 and 31, currently dayOfMonth == $dayOfMonth" }
+        check(month in 0..11) { "Month must be between 0 and 11, currently month == $month" }
+        check(year >= 1900) { "Year must be greater than 1900, currently year == $year" }
+
         val listener = DatePickerDialog.OnDateSetListener { _, y, m, d ->
             onDatePicked(d, m, y)
         }
@@ -40,7 +44,9 @@ class DatePickerService @Inject constructor(
             month,
             dayOfMonth
         ).apply {
-            datePicker.minDate = minDate
+            if (minDate != null) {
+                datePicker.minDate = minDate.toLong()
+            }
         }.show()
     }
 }

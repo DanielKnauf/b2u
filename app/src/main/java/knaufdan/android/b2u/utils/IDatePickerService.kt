@@ -4,7 +4,7 @@ interface IDatePickerService {
 
     fun showDatePicker(
         date: Triple<DayOfMonth, Month, Year>,
-        minDate: Long,
+        minDate: Number?,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     )
 
@@ -12,7 +12,7 @@ interface IDatePickerService {
         dayOfMonth: DayOfMonth,
         month: Month,
         year: Year,
-        minDate: Long,
+        minDate: Number?,
         onDatePicked: (DayOfMonth, Month, Year) -> Unit
     )
 }

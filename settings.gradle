@@ -1,2 +1,9 @@
 include ':app'
 rootProject.name='b2u'
+
+def archServicesModules = ["core", "arch", "services"]
+
+archServicesModules.each { module ->
+    include(":$module")
+    project(":$module").projectDir = file("../ArchServices/$module")
+}

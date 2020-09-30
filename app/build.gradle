@@ -7,12 +7,13 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "knaufdan.android.b2u"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,8 +21,17 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     apply from: "$rootDir/buildSrc/ktlint.gradle.kts"
@@ -30,7 +40,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //archServices
-    implementation Dependencies.archServices
+   // implementation Dependencies.archServices
+    implementation project(':arch')
+    implementation project(':core')
 
     //kotlin
     implementation Dependencies.kotlin_stdlib
@@ -39,6 +51,7 @@ dependencies {
     implementation Dependencies.androidX_app_compat
     implementation Dependencies.androidX_core_ktx
     implementation Dependencies.androidX_constraint_layout
+    implementation Dependencies.androidX_recyclerView
 
     //dagger2
     implementation Dependencies.dagger_core

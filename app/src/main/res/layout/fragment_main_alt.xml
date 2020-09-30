@@ -4,10 +4,6 @@
 
     <data>
 
-        <import type="android.view.View" />
-
-        <import type="knaufdan.android.arch.base.component.api.ViewTransition" />
-
         <variable
             name="viewModel"
             type="knaufdan.android.b2u.MainFragmentViewModel" />
@@ -22,31 +18,28 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="32dp"
             android:layout_height="32dp"
+            android:layout_marginRight="32dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_round"
             android:elevation="4dp"
-            android:enabled="@{viewModel.buttonEnabled}"
             android:onClick="@{() -> viewModel.onButtonClicked()}"
             android:stateListAnimator="@null"
             android:text="@{viewModel.buttonText}"
-            android:visibility="@{viewModel.buttonEnabled ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
             app:components="@{viewModel.components}"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:transition="@{ViewTransition.FADE_OUT}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

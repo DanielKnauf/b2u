@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="splash_text_size">16sp</dimen>
+    <dimen name="splash_text_margin">32dp</dimen>
+
+    <color name="splash_text_color">#fff</color>
+</resources>

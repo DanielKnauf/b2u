@@ -1,8 +1,12 @@
-package knaufdan.android.b2u.utils
+package knaufdan.android.b2u.datepicker.implementation
 
 import android.app.DatePickerDialog
-import javax.inject.Inject
+import knaufdan.android.b2u.datepicker.DayOfMonth
+import knaufdan.android.b2u.datepicker.IDatePickerService
+import knaufdan.android.b2u.datepicker.Month
+import knaufdan.android.b2u.datepicker.Year
 import knaufdan.android.core.IContextProvider
+import javax.inject.Inject
 
 class DatePickerService @Inject constructor(
     private val contextProvider: IContextProvider

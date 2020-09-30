@@ -4,8 +4,9 @@ import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import javax.inject.Inject
 import knaufdan.android.core.IContextProvider
+import knaufdan.android.core.preferences.ISharedPrefService
+import javax.inject.Inject
 
 class B2UApplication : Application(), HasAndroidInjector {
     @Inject
@@ -14,6 +15,9 @@ class B2UApplication : Application(), HasAndroidInjector {
     @Inject
     internal lateinit var contextProvider: IContextProvider
 
+    @Inject
+    internal lateinit var sharedPrefService: ISharedPrefService
+
     override fun onCreate() {
         super.onCreate()
         DaggerB2UComponent
@@ -21,6 +25,10 @@ class B2UApplication : Application(), HasAndroidInjector {
             .inject(this)
 
         contextProvider.setContext(applicationContext)
+
+        sharedPrefService.configure {
+            setLocation("knaufdan.android.b2u")
+        }
     }
 
     override fun androidInjector(): AndroidInjector<Any> {
